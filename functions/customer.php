@@ -1,11 +1,8 @@
 <?php
-include ('../actions/dbConnector.php');
-/**
-* 
-*/
 class Customer 
 {
-	
+	public $db;
+
 	function __construct()
 	{
 		 $id;
@@ -14,20 +11,20 @@ class Customer
 		 $address;
 		 $email;
 		 $phoneNo;
-		 $db;
-
-		    $this->db = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
+		   	$this->db = new mysqli("localhost", "root", "", "bookstore");
             if(mysqli_connect_errno()) {
-            echo "Error: Could not connect to database.";
-            exit;
 
+                echo "Error: Could not connect to database.";
+
+                    exit;
             }
 
 	}
 
-	public function register($name,$password,$address,$email,$phoneNo){
-		$password = md5($password);
-		$sql="SELECT * FROM customer WHERE email='$email' OR password='$password'";
+	//reister a  new user
+	public function register($name,$password,$address,$email,$phoneNo,$as){
+
+		$sql="SELECT * FROM customer WHERE email='$email' -- OR password='$password'";
 
 		//checking if the username or email is available in db
 		$check = $this->db->query($sql);
@@ -35,16 +32,17 @@ class Customer
 
 		//if the username is not in db then insert to the table
 		if ($count_row == 0){
-		$sql1="INSERT INTO customer SET name='$name', password='$password', address='$address', email='$email', phone_no='$phoneNo'";
-		$result = mysqli_query($this->db,$sql1) or die(mysqli_connect_errno()."Data cannot inserted");
+		$sql1="INSERT INTO customer SET name='$name', password='$password', address='$address', email='$email', phone_no='$phoneNo', usertype=".$as;
+		$result = mysqli_query( $this->db,$sql1) or die(mysqli_connect_errno()."Data cannot inserted");
 		return $result;
 		}
 		else { 
 			return false;
 		}
 	}
+
+	//login to a system
 	public function login($email,$password){
-		$password = md5($password);
 		$sql2="SELECT * from customer WHERE email='$email' and password='$password'";
 
 		//checking if the username is available in the table
@@ -56,29 +54,29 @@ class Customer
 		// this login varification will use for the session 
 		$_SESSION['login'] = true;
 		$_SESSION['id'] = $user_data['id'];
+		$_SESSION['name'] = $user_data['name'];
+		$_SESSION['utype'] = $user_data['usertype'];
 		return true;
 		}
 		else{
 		return false;
 		}
-		}
-		/*** for showing the username or fullname ***/
-		public function get_fullname($id){
-		$sql3="SELECT name FROM customer WHERE id = $id";
-		$result = mysqli_query($this->db,$sql3);
-		$user_data = mysqli_fetch_array($result);
-		echo $user_data['name'];
+
 		}
 
-		/*** starting the session ***/
-		public function get_session(){
-		return $_SESSION['login'];
-		}
+	//to view a user's profile
+	public function viewProfile($id){
+		$sql2="SELECT * from customer WHERE id=".$id;
+		$result = mysqli_query( $this->db,$sql2);
+		return $result;
+	}
 
-		public function user_logout() {
-		$_SESSION['login'] = FALSE;
-		session_destroy();
-		}
-
-
+	//tp update a profile
+	public function updateProfile($id,$name,$pass,$add,$email,$phone){
+		$sql2="UPDATE customer SET name='$name', password='$pass', address='$add', email='$email', phone_no='$phone', usertype='0' WHERE id=".$id;
+		$result = mysqli_query( $this->db,$sql2);
+		return $result;
+	}
 }
+
+?>

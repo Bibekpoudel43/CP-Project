@@ -1,0 +1,196 @@
+/*css style for left panel and right panel*/
+
+*{
+	padding-top: 0; 
+	margin: 0; 
+	font-family: verdana
+}
+body{
+	background: #3b544c;
+	 padding: 0%; 
+}
+#header
+{
+	width: 100%;
+	 height: 50px;
+}
+#header h2
+{
+	background: #212023;
+	color: #fff; 
+	line-height: 50px;
+	text-align: center; 
+}
+
+#bodyleft
+{
+	padding-top: 5%;
+	width: 15%; 
+	height: 400px; 
+
+	float: left;
+}
+#bodyright
+{
+	padding-bottom: 10%; 
+	border-radius: 1px; 
+	width: 84.5%; 
+	min-height: 500px; 
+	background:  #3b544c; 
+	margin: 20px 0px 10px 0px; 
+	float: left;
+}
+
+#bodyleft h3
+{
+	background: #403272;
+	 color: #fff; 
+	 height: 40px; 
+	 line-height: 40px; 
+	 text-align: center; 
+	 padding-right: 90px;
+}
+#bodyleft ul
+{
+	list-style-type: none;
+	 margin-top: 10px;
+}
+#bodyleft ul li
+{
+	border-radius: 3px;
+	 height: 30px;
+	  line-height: 30px; 
+	  padding-left: 3px;
+}
+#bodyleft ul li a
+{
+	display: block; 
+	text-decoration: none; 
+	color: #fff;
+}
+#bodyleft ul li:hover
+{
+	background: #212623 
+}
+
+#bodyright h3
+{
+	border-bottom: 2px solid #c1bbd6; 
+	 background: #424443; 
+	 color: #fff; 
+	 height: 40px; 
+	 line-height: 40px; 
+	 border-radius: 3px; 
+	 text-align: center; 
+	 margin-left: 20%;
+	 margin-right: 30%;
+}
+#bodyright form table
+{
+	width: 95%; 
+	margin: auto; 
+	margin-top: 10px;
+}
+#bodyright form table tr th
+{
+	padding: 0% 2% 0% 2%;  
+	font-size: 17px;
+		color: #fff; 
+	text-align: left;
+	 background: #425c6f; 
+	 height: 30px;
+}
+#bodyright form table tr td
+{
+	padding-left: 10%; 
+	width: 150px; 
+	height: 35px; 
+	color: #fff;
+	padding-left: 2.5%;
+}
+#bodyright form table tr td a
+{
+	text-decoration: none; 
+	color: #fff
+}
+#bodyright form table tr td input
+{
+	width: 100%; 
+	height: 30px; 
+	border-radius: 3px; 
+	border: 1px solid #fff; 
+	padding-left: 2px; 
+}
+#bodyright form input[type=submit]
+{
+	width: 150px; 
+	background: #475454; 
+	/*border: 2px solid #20144c; */
+	border-radius: 3px; 
+	height: 30px; 
+	color: #fff; 
+	margin-top: 20px;
+}
+#bodyright form button:hover
+{
+	background: #20144c;
+}
+
+#bodyright form table tr td select
+{
+	width: 100%; 
+	height: 30px; 
+	border-radius: 3px; 
+	border: 1px solid #fff; 
+}
+.scroll
+{
+	overflow-x: scroll;
+	overflow-y: scroll;
+}
+
+.scroll form table tr th
+{
+	text-align: center !important; 
+	padding:0% !important; 
+	font-size: 16px !important
+}
+.scroll form table tr td
+{
+	text-align: center; padding-left: 2% !important; 
+	min-width: 100px; height: 35px
+}
+.scroll form table tr td img{
+	height: 40px; 
+	width: 40px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

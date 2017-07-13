@@ -1,0 +1,14 @@
+.awe-slider{
+	background: #d9edf7;
+	padding-top: 80px;
+	padding-bottom: 80px;
+}
+.awe-navbar{
+padding-top: 15px;
+padding-bottom: 20px;
+}
+
+.awe-navbar .navbar-nav>.active>a{
+	background: #2F4F4F;
+	color: white;
+}

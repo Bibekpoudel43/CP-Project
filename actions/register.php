@@ -1,17 +1,20 @@
 <?php
-include('dbConnector.php');
 include('../functions/customer.php');
 $Customer = new Customer();
+
+//storing the data provided by the user to the datbase
 if(isset($_POST['submit'])){
 	$name = $_POST['user'];
 	$password = $_POST['password'];
 	$email = $_POST['email'];
 	$address = $_POST['address'];
 	$phone = $_POST['phone'];
+	$as = $_POST['as'];
 	extract($_POST);
- 	$register = $Customer->register($name,$password,$address,$email,$phone);  
+ 	$register = $Customer->register($name,$password,$address,$email,$phone,$as);
       if($register){  
          header('Location: login.php');
+         return;
       }
       else
       {  
@@ -76,6 +79,8 @@ if(isset($_POST['submit'])){
 		</div>
 		<br>
 		<div class="register">
+
+		<!-- form for registration -->
 		<form action="" method="POST" name="reg">
 
      			<input type="text" placeholder="username" name="user" id="usr"><br>
@@ -83,6 +88,10 @@ if(isset($_POST['submit'])){
 				<input type="password" placeholder="password" name="password" id="pwd"><br>
 				<input type="text" placeholder="address" name="address" id="add"><br>
 				<input type="text" placeholder="phone number" name="phone" id="phn"><br>
+				<select id="soflow" name="as">
+				  <option value="0" >User</option>
+				  <option value="1" >Admin</option>
+				</select>
 				<input type="submit" value="Register" name='submit' onclick="return(register_form());">
 		</form>
 		</div>
